@@ -40,7 +40,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(
         builder.Configuration.GetConnectionString("DefaultConnection"),
-        new MySqlServerVersion(new Version(8, 0, 2))));
+        new MySqlServerVersion(new Version(8, 0, 21)),
+        mySqlOptions => mySqlOptions.EnableRetryOnFailure()
+    ));
 
 //Đoạn Services cho chức năng Logic hoạt động
 builder.Services.AddScoped<IAuthService, AuthService>();
@@ -142,11 +144,10 @@ if (!Directory.Exists(pdfPath))
     Directory.CreateDirectory(pdfPath);
 }
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
+
+app.Urls.Add("http://*:8080");
 
 app.UseStaticFiles(new StaticFileOptions
 {
@@ -165,11 +166,10 @@ app.UseCors("AllowAngularApp");
 
 app.UseMiddleware<ExceptionMiddleware>();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseHttpsRedirection();
-}
-app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+
+app.UseHttpsRedirection();
+
+//app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 
 app.UseAuthentication();  // Đảm bảo đã gọi middleware xác thực
 
