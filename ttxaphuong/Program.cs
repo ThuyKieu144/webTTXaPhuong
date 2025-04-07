@@ -117,13 +117,6 @@ using (var scope = app.Services.CreateScope())
 }
 
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
 //app.UseStaticFiles(new StaticFileOptions
 //{
 //    FileProvider = new PhysicalFileProvider(Path.Combine(builder.Environment.ContentRootPath, "Uploads")),
@@ -147,6 +140,12 @@ var pdfPath = Path.Combine(builder.Environment.ContentRootPath, "Pdf");
 if (!Directory.Exists(pdfPath))
 {
     Directory.CreateDirectory(pdfPath);
+}
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseStaticFiles(new StaticFileOptions
