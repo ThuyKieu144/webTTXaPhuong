@@ -30,6 +30,9 @@
     <Folder Include="wwwroot\" />
     <Folder Include="Uploads\DanhMucHinhAnh2\" />
     <Folder Include="Pdf\" />
+        <None Update="isrgrootx1.pem">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
