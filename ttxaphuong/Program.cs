@@ -83,6 +83,14 @@ builder.Services.AddCors(options =>
         });
 });
 
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ConfigureHttpsDefaults(opts => {
+        // Tắt HTTPS bắt buộc nếu không có chứng chỉ
+        opts.ServerCertificate = null;
+    });
+});
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
