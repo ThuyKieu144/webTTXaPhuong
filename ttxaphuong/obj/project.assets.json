@@ -3266,11 +3266,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\0.ThucTap\\TT_XaPhuong\\TTDT_XaPhuong_Demo\\demo\\ttxaphuong\\ttxaphuong\\ttxaphuong.csproj",
+      "projectUniqueName": "D:\\0.ThucTap\\api\\ttxaphuong\\ttxaphuong.csproj",
       "projectName": "ttxaphuong",
-      "projectPath": "D:\\0.ThucTap\\TT_XaPhuong\\TTDT_XaPhuong_Demo\\demo\\ttxaphuong\\ttxaphuong\\ttxaphuong.csproj",
+      "projectPath": "D:\\0.ThucTap\\api\\ttxaphuong\\ttxaphuong.csproj",
       "packagesPath": "C:\\Users\\Tuan Giang Computer\\.nuget\\packages\\",
-      "outputPath": "D:\\0.ThucTap\\TT_XaPhuong\\TTDT_XaPhuong_Demo\\demo\\ttxaphuong\\ttxaphuong\\obj\\",
+      "outputPath": "D:\\0.ThucTap\\api\\ttxaphuong\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

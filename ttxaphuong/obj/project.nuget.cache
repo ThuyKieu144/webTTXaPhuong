@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jwL1+8DOeocf6pkP/ytX8QOSfdz4aCwMtftJ7Ns2EyH8aZk7Vgu+H2azcIgON5ryT3raVXrSp1szzWsgHrVh6A==",
+  "dgSpecHash": "L7+dxOyChPeclTLU/lScLqICEQLbPTlFUDBqR/LRbZ2gnoVwc9OIEYyY9x25xU8pEfuNmUaxf26Ip8lU/6qcmA==",
   "success": true,
-  "projectFilePath": "D:\\0.ThucTap\\TT_XaPhuong\\TTDT_XaPhuong_Demo\\demo\\ttxaphuong\\ttxaphuong\\ttxaphuong.csproj",
+  "projectFilePath": "D:\\0.ThucTap\\api\\ttxaphuong\\ttxaphuong.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Tuan Giang Computer\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
     "C:\\Users\\Tuan Giang Computer\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
