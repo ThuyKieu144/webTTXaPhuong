@@ -149,6 +149,9 @@ app.UseSwaggerUI();
 
 app.Urls.Add("http://*:8080");
 
+
+app.UseCors("AllowAngularApp");
+
 app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(uploadPath),
@@ -168,9 +171,6 @@ app.UseStaticFiles(new StaticFileOptions
         ctx.Context.Response.Headers.Append("Access-Control-Allow-Origin", "*");
     }
 });
-
-
-app.UseCors("AllowAngularApp");
 
 app.UseMiddleware<ExceptionMiddleware>();
 
