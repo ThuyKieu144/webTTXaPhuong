@@ -78,7 +78,10 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowAngularApp",
         policy =>
         {
-            policy.WithOrigins("https://congtt123.id.vn", "https://ttdt2503.id.vn", "https://ttdt03.id.vn") // Địa chỉ của ứng dụng 
+            policy.WithOrigins(
+                    "https://congtt123.id.vn",
+                    "https://ttdt2503.id.vn", 
+                    "https://ttdt03.id.vn") // Địa chỉ của ứng dụng 
                   .AllowAnyHeader()
                   .AllowAnyMethod();
                   //.AllowCredentials(); // ✅ Cho phép gửi Authorization header
@@ -152,13 +155,24 @@ app.Urls.Add("http://*:8080");
 
 app.UseCors("AllowAngularApp");
 
+var allowedOrigins = new[] {
+    "https://ttdt03.id.vn",
+    "https://ttdt2503.id.vn",
+    "https://congtt123.id.vn"
+};
+
 app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(uploadPath),
     RequestPath = "/api/images",
     OnPrepareResponse = ctx =>
     {
-        ctx.Context.Response.Headers.Append("Access-Control-Allow-Origin", "*");
+        var origin = ctx.Context.Request.Headers["Origin"].ToString();
+        if (allowedOrigins.Contains(origin))
+        {
+            ctx.Context.Response.Headers.Append("Access-Control-Allow-Origin", origin);
+            ctx.Context.Response.Headers.Append("Vary", "Origin"); // ✅ giúp browser xử lý cache đúng
+        }
     }
 });
 
@@ -168,9 +182,15 @@ app.UseStaticFiles(new StaticFileOptions
     RequestPath = "/api/pdf",
     OnPrepareResponse = ctx =>
     {
-        ctx.Context.Response.Headers.Append("Access-Control-Allow-Origin", "*");
+        var origin = ctx.Context.Request.Headers["Origin"].ToString();
+        if (allowedOrigins.Contains(origin))
+        {
+            ctx.Context.Response.Headers.Append("Access-Control-Allow-Origin", origin);
+            ctx.Context.Response.Headers.Append("Vary", "Origin");
+        }
     }
 });
+
 
 app.UseMiddleware<ExceptionMiddleware>();
 
